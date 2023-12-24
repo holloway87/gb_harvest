@@ -1,0 +1,9 @@
+/.idea/
+/cmake-build-debug/
+*.asm
+*.gb
+*.ihx
+*.lst
+*.o
+*.sav
+*.sym
