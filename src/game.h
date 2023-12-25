@@ -3,6 +3,10 @@
 
 #include <stdint.h>
 
+#define PLAYER_HORIZONTAL 0x1U
+#define PLAYER_VERTICAL 0x2U
+#define PLAYER_FRAME_CHANGE 0x4U
+
 /**
  * Old horizontal camera position in tiles.
  */
@@ -64,8 +68,38 @@ extern uint8_t joy_pad_now;
 extern uint8_t joy_pad_old;
 
 /**
+ * Index of the current player frame.
+ */
+extern uint8_t player_frame;
+
+/**
+ * How many frames since the last animation frame change.
+ */
+extern uint8_t player_frames_cnt;
+
+/**
+ * Player information:
+ *
+ * Bit 1 = horizontal movement, 0 = left, 1 = right
+ * Bit 2 = vertical movement, 0 = up, 1 = down
+ */
+extern uint8_t player_info;
+
+/**
+ * Player information from the last frame.
+ *
+ * @see player_info
+ */
+extern uint8_t player_info_old;
+
+/**
  * Update the camera.
  */
 void updateCamera();
+
+/**
+ * Update the player.
+ */
+void updatePlayer();
 
 #endif //GB_HARVEST_GAME_H
