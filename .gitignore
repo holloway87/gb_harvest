@@ -1,9 +1,10 @@
 /.idea/
 /cmake-build-debug/
 *.asm
-*.gb
+*.gbc
 *.ihx
 *.lst
 *.o
+*.pocket
 *.sav
 *.sym

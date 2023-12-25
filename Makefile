@@ -2,15 +2,18 @@ C_SOURCES = $(wildcard src/*.c res/*.c)
 OBJ = ${C_SOURCES:.c=.o}
 CC=~/Programs/gbdk/bin/lcc
 
-all : gb_harvest.gb
+all : gb_harvest.gbc gb_harvest.pocket
 
 build : all
 
-run : all
-	mGBA gb_harvest.gb
+run : gb_harvest.gbc
+	mGBA gb_harvest.gbc
 
-gb_harvest.gb : $(OBJ)
+gb_harvest.gbc : $(OBJ)
 	$(CC) -Wm-yC -o $@ $^
+
+gb_harvest.pocket : $(OBJ)
+	$(CC) -Wm-yC -msm83:ap -o $@ $^
 
 %.o : %.c
 	$(CC) -c -o $@ $<
@@ -24,5 +27,7 @@ clean:
 	rm src/*.lst
 	rm src/*.sym
 	rm src/*.o
-	rm *.gb
+	rm *.gbc
+	rm *.pocket
 	rm *.ihx
+	rm *.sav
