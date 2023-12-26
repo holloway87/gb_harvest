@@ -3,9 +3,19 @@
 
 #include <stdint.h>
 
+#define CAMERA_HORIZONTAL 0x1U
+#define CAMERA_VERTICAL 0x2U
 #define PLAYER_HORIZONTAL 0x1U
 #define PLAYER_VERTICAL 0x2U
 #define PLAYER_FRAME_CHANGE 0x4U
+
+/**
+ * Information about the camera.
+ *
+ * Bit 1 = horizontal movement, 0 = no, 1 = yes
+ * Bit 2 = vertical movement, 0 = no, 1 = yes
+ */
+extern uint8_t bkg_cam_info;
 
 /**
  * Old horizontal camera position in tiles.
@@ -18,22 +28,34 @@ extern uint16_t bkg_cam_old_x;
 extern uint16_t bkg_cam_old_y;
 
 /**
- * Horizontal camera position in tiles.
+ * Scroll speed of the camera when it moves.
+ */
+extern uint8_t bkg_cam_scroll_speed;
+
+/**
+ * Speed of the camera after after every frame.
+ *
+ * It's a face value, which will be divided by 16.
+ */
+extern uint8_t bkg_cam_speed;
+
+/**
+ * Horizontal camera position as a face value, it needs to be divided by 16.
  */
 extern uint16_t bkg_cam_x;
 
 /**
- * Vertical camera position in tiles.
+ * Vertical camera position as a face value, it needs to be divided by 16.
  */
 extern uint16_t bkg_cam_y;
 
 /**
- * Old horizontal map position in tiles.
+ * Old horizontal map position as a face value, it needs to be divided by 16.
  */
 extern uint8_t bkg_map_pos_old_x;
 
 /**
- * Old vertical map position in tiles.
+ * Old vertical map position as a face value, it needs to be divided by 16.
  */
 extern uint8_t bkg_map_pos_old_y;
 
@@ -48,14 +70,14 @@ extern uint8_t bkg_map_pos_x;
 extern uint8_t bkg_map_pos_y;
 
 /**
- * Amount of horizontal background scroll.
+ * Absolute value of the horizontal background scroll.
  */
-extern int8_t bkg_scroll_x;
+extern uint8_t bkg_scroll_x;
 
 /**
- * Amount of vertical background scroll.
+ * Absolute value of the vertical background scroll.
  */
-extern int8_t bkg_scroll_y;
+extern uint8_t bkg_scroll_y;
 
 /**
  * The current joy pad value.

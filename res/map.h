@@ -4,6 +4,8 @@
 #define map_palettes_cnt 3
 #define map_width 432
 #define map_height 416
+#define map_width_face 6912
+#define map_height_face 6656
 
 extern const unsigned char map_tiles[];
 
